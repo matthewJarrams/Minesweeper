@@ -1,5 +1,5 @@
 # Minesweeper
-Fun side project to develop a game of minsweeper
+Fun side project to develop a game of minesweeper
 
 To use create a java project and copy the two files in /src to the project.
 
