@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 public class Game 
 {
-	private static final int NUM_MINES = 2;
+	private static final int NUM_MINES = 7;
 	private static final int NUM_ROWS = 10;
 	private static final int NUM_COLS = 10;
 	private static final int FLAGS = 10;
@@ -227,7 +227,7 @@ public class Game
 	}
 	private static void Reveal(Square[][] board, int row, int column)
 	{
-		PrintBoard(board, false);
+		//PrintBoard(board, false);
 		if(row >= 0 && row < NUM_ROWS &&  column >= 0 && column < NUM_COLS && board[row][column].seen == false)
 		{
 			board[row][column].symbol = board[row][column].Hidesymbol;
