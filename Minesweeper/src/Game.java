@@ -227,27 +227,37 @@ public class Game
 	}
 	private static void Reveal(Square[][] board, int row, int column)
 	{
-		board[row][column].symbol = board[row][column].Hidesymbol;
-		
-		if(board[row][column].adjMines == 0)
+		PrintBoard(board, false);
+		if(row >= 0 && row < NUM_ROWS &&  column >= 0 && column < NUM_COLS && board[row][column].seen == false)
 		{
-			int [] adjPoints = {-1, -1, -1, 0, -1, 1, 0, -1, 0, 1, 1, -1, 1, 0, 1, 1};
-			for(int i = 0; i < adjPoints.length; i++)
+			board[row][column].symbol = board[row][column].Hidesymbol;
+			board[row][column].seen = true;
+			
+			if(board[row][column].adjMines == 0)
 			{
-				int adjRow = adjPoints[i];
-				int adjCol = adjPoints[++i];
-				
-				int rowCheck = row + adjRow;
-				int colCheck = column + adjCol;
-				
-				if(rowCheck >= 0 && rowCheck < NUM_ROWS &&  colCheck >= 0 && colCheck < NUM_COLS)
+				int [] adjPoints = {-1, -1, -1, 0, -1, 1, 0, -1, 0, 1, 1, -1, 1, 0, 1, 1};
+				for(int i = 0; i < adjPoints.length; i++)
 				{
-					//Reveal(board, rowCheck, colCheck);
-					board[rowCheck][colCheck].symbol = board[rowCheck][colCheck].Hidesymbol;
+					int adjRow = adjPoints[i];
+					int adjCol = adjPoints[++i];
+					
+					int rowCheck = row + adjRow;
+					int colCheck = column + adjCol;
+					
+					if(rowCheck >= 0 && rowCheck < NUM_ROWS &&  colCheck >= 0 && colCheck < NUM_COLS)
+					{
+						//Reveal(board, rowCheck, colCheck);
+						board[rowCheck][colCheck].symbol = board[rowCheck][colCheck].Hidesymbol;
+						//board[rowCheck][colCheck].seen = true;
+						if(board[rowCheck][colCheck].adjMines == 0)
+						{
+							Reveal(board, rowCheck, colCheck);
+						}
+					}
 				}
 			}
-		}
 		
+		}
 	}
 	private static void SetAdj(Square[][] board, int row, int column)
 	{

@@ -6,6 +6,7 @@ public class Square
 	boolean flag;
 	String symbol;
 	String Hidesymbol;
+	boolean seen;
 	
 	
 	public Square()
@@ -15,6 +16,7 @@ public class Square
 		this.flag = false;
 		this.symbol = " ? ";
 		this.Hidesymbol = " ? ";
+		this.seen = false;
 	}
 	
 	public void setMine(boolean mine)
