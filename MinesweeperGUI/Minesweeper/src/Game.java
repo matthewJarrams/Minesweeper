@@ -1,5 +1,7 @@
 
 import javafx.scene.layout.*;
+
+import java.awt.Dimension;
 import java.util.Random;
 
 import javafx.scene.control.Label;
@@ -202,7 +204,10 @@ public class Game extends Application
 	@Override
     public void start(Stage primaryStage) {
         this.primaryStage1 = primaryStage;
-		scene = new Scene(createContent());    
+		Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth() / 3;
+		double height = screenSize.getHeight() / 2;
+		scene = new Scene(createContent(), width, height);    
         primaryStage1.setTitle("Minesweeper");
         primaryStage1.setScene(scene);
         primaryStage1.show();
